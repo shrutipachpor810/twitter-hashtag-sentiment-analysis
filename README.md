@@ -1,59 +1,136 @@
-# twitter-hashtag-sentiment-analysis.py
-Python script for analyzing Twitter users' sentiment polarity towards a specific trending hashtag on the platform online.
-  - API & Source Platform used: 
-    - [Twitter Developer API](https://developer.twitter.com/en/docs/twitter-api) & [Twitter.com](https://twitter.com)
-  - Libraries used:
-    - `Tweepy`
-    - `Textblob`
-    - `Pandas`
-    - `Numpy`
-    - `Matplotlib`
+# 🔥 Twitter Hashtag Sentiment Analyzer
 
-## Fetching the repo
-  - Download the [.zip file](https://github.com/kxnyshk/twitter-hashtag-sentiment-analysis.py/archive/refs/heads/master.zip)
-  - Unzip the folder
-  - Open the [main.py](https://github.com/kxnyshk/twitter-hashtag-sentiment-analysis.py/blob/master/main.py) file in the terminal of your preferred IDE.
+## 📌 Overview
 
-## How to use
-  - Enter the `#hashtag` you wanna analyze the [sentiment polarity](https://getthematic.com/sentiment-analysis/) of.
-  - Wait for the program to analyze the data from the fetched dataset.
-  - Dataset used in the analysis, usually ranges between (10, 1000] and is non-customizable by the user.
-  
-  ### Commands
-   - `#hashtag` Trending [hashtag](https://help.twitter.com/en/using-twitter/how-to-use-hashtags) or hot topic you wanna analyze.
-   - `-1` Terminates program
-   
-## Twitter Dev Auth setup
- - The Twitter Developer Authentication for an elevated API has been done through [here](https://developer.twitter.com/en/products/twitter-api).
- - Read the official documentation [here](https://developer.twitter.com/en/docs)
- - The API & TOKEN [keys](https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api#:~:text=API%20Key%20and%20Secret%3A%20Essentially,Tokens%20or%20App%20Access%20Token.) are saved via [configparser](https://docs.python.org/3/library/configparser.html) in Python.
- - Therefore, you would need to setup your own keys after [signing up](https://developer.twitter.com/en/portal/petition/essential/basic-info) for your own Twitter Dev account.
- - To setup the config path, create this path/file: `./TwitterDev/config.ini` in the dir/zip.
- - No need to re-setup the path in any code, it has already been declared in [auth.py](https://github.com/kxnyshk/twitter-hashtag-sentiment-analysis.py/blob/master/auth.py)
+This project analyzes the sentiment of Twitter hashtags using advanced Natural Language Processing (NLP) techniques. It leverages a transformer-based deep learning model (**Twitter RoBERTa**) to classify sentiment as **Positive, Negative, or Neutral**, and provides deeper insights such as polarity scores, trend analysis, and visualizations.
 
-## About Tweepy
- - The requests between the script and the API has been handled through Tweepy library.
- - Read the official documentation [here](https://docs.tweepy.org/en/stable/)
+---
 
-## Libraries used
-  
-  ### Textblob
-   - TextBlob is a Python (2 and 3) library for processing textual data.
-   - It provides a simple API for diving into common natural language processing (NLP) tasks such as part-of-speech tagging, noun phrase extraction, sentiment analysis, classification, translation, and more.
-   - Read official documentation [here](https://textblob.readthedocs.io/en/dev/)
+## 🚀 Features
 
-  ### Pandas
-   - Pandas is a Python library used to analyze data.
-   - Read official documentation [here](https://pandas.pydata.org/docs/)
+* 🧠 **AI-based Sentiment Analysis** using Twitter RoBERTa
+* 📊 **Polarity Score** (-1 to +1) for sentiment intensity
+* 📈 **Trend Score** to identify overall sentiment direction
+* 📉 **Sentiment Distribution Graphs**
+* 🌈 **WordCloud Visualization** of tweet content
+* 🔍 **Top Positive & Negative Tweets Extraction**
+* ⚡ **Fallback for unseen hashtags (no dataset needed)**
+* 🌐 **Streamlit Web App Interface**
 
-  ### Numpy
-   - NumPy is a Python library used for working with arrays. It also has functions for working in domain of linear algebra, fourier transform, and matrices.
-   - Read the official documentation [here](https://numpy.org/doc/stable/)
+---
 
-  ### Matplotlib
-   - Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python.
-   - Read the official latest (3.5.1) documentation [here](https://matplotlib.org/3.5.1/)
+## 🛠️ Tech Stack
 
-## Further reading
-  - [Sentiment Analysis: Comprehensive Beginners Guide](https://getthematic.com/sentiment-analysis/)
-  - [Is More Data Always Better For Building Analytics Models?](https://analyticsindiamag.com/is-more-data-always-better-for-building-analytics-models/)
+* **Python**
+* **Pandas**
+* **Matplotlib**
+* **Transformers (Hugging Face)**
+* **Streamlit**
+* **WordCloud**
+* **Regex (re)**
+
+---
+
+## 📂 Project Structure
+
+```
+├── app.py                # Streamlit web app
+├── main.py               # CLI-based analysis
+├── full-corpus.csv       # Dataset
+├── requirements.txt      # Dependencies
+├── .gitignore
+└── README.md
+```
+
+---
+
+## ⚙️ Installation
+
+### 1. Clone the repository
+
+```
+git clone https://github.com/shrutipachpor810/twitter-hashtag-analysis.git
+cd twitter-hashtag-analysis
+```
+
+### 2. Create virtual environment
+
+```
+python -m venv env
+env\Scripts\activate   # Windows
+```
+
+### 3. Install dependencies
+
+```
+pip install -r requirements.txt
+```
+
+---
+
+## ▶️ Usage
+
+### 🔹 Run CLI version
+
+```
+python main.py
+```
+
+### 🔹 Run Streamlit Web App
+
+```
+streamlit run app.py
+```
+
+---
+
+## 📊 Example Output
+
+* Sentiment distribution (Positive / Negative / Neutral)
+* Average polarity score
+* Trend score
+* WordCloud visualization
+* Top positive & negative tweets
+
+---
+
+## 🧠 Model Used
+
+* **Twitter RoBERTa** (`cardiffnlp/twitter-roberta-base-sentiment`)
+* Trained on millions of tweets for better understanding of:
+
+  * Slang
+  * Emojis
+  * Hashtags
+  * Informal language
+
+---
+
+## 📌 Applications
+
+* Social media monitoring
+* Brand sentiment analysis
+* Trend detection
+* Public opinion mining
+
+---
+
+## 🔮 Future Enhancements
+
+* 🔴 Real-time Twitter API integration
+* 🎨 Advanced UI (dark mode, dashboards)
+* 🌍 Multi-language sentiment analysis
+* 📊 Model comparison (BERT vs RoBERTa vs VADER)
+
+---
+
+## 👩‍💻 Author
+
+**Shruti Pachpor**
+GitHub: https://github.com/shrutipachpor810
+
+---
+
+## ⭐ If you like this project
+
+Give it a ⭐ on GitHub!
